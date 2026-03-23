@@ -5,8 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - Bar
+<<<<<<< HEAD
   - House
   - Direction
+=======
+>>>>>>> c46a57211d4957d63987c37dc49ed7c042beb53b
   layers:
   - Default
   - TransparentFX

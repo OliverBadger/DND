@@ -4,10 +4,18 @@ using UnityEngine.InputSystem;
 public class InputHandler : MonoBehaviour
 {
     private Camera _camera;
+    private GameObject player;
+    private PlayerLocation playerLocation;
+    private GameObject bar;
+    private OpenBarHandler openBarHandler;
 
     private void Awake()
     {
         _camera = Camera.main;
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerLocation = player.GetComponent<PlayerLocation>();
+        bar = GameObject.FindGameObjectWithTag("Bar");
+        openBarHandler = bar.GetComponent<OpenBarHandler>();
     }
 
     public void OnClick(InputAction.CallbackContext context)
@@ -17,10 +25,18 @@ public class InputHandler : MonoBehaviour
         var rayHit = Physics2D.GetRayIntersection(_camera.ScreenPointToRay(Mouse.current.position.ReadValue()));
         if(!rayHit.collider) return;
 
+<<<<<<< HEAD
         InputService inputService = new InputService();
 
         inputService.Delegate(rayHit.collider.gameObject.name, rayHit.collider.gameObject.tag);
 
         Debug.Log(rayHit.collider.gameObject.name);
+=======
+        if(rayHit.collider.gameObject.CompareTag("Bar"))
+        {
+            playerLocation.locationString = "Bar";
+            openBarHandler.OpenBar();
+        }
+>>>>>>> c46a57211d4957d63987c37dc49ed7c042beb53b
     }
 }
